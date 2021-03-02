@@ -14,93 +14,91 @@
 </head>
 
 <body>
+  <!-- <div class="grid-container"> -->
 
-  <header class="header row">
-    <div class="">
-      Weather Dashboard
-  </div>
+  <header class="header">
+    <div class="header__title">WEATHER DASHBOARD</div>
   </header>
 
-
-  <main>
-    <div class="container">
-
-      <div class="row">
-
-        <div class="col-sm-3">
-          <div class="card-body">
-            Search for City Weather
-          </div>
-          <div class="input-group mb-3">
-            <input id="city-input" type="text" class="form-control" placeholder="City Name" aria-label="City Name"
-              aria-describedby="button-addon2">
-            <div class="input-group-append">
-              <button class="btn btn-outline-secondary" type="button" id="button-addon2">Search</button>
-            </div>
-            <ul id="cityHistory" class="history col-lg-12"></ul>
-
-          </div>
+  <main class="main row">
+    <div class="city-container col-sm-2">
+      <div class="col-sm">
+        <div class="card-body">
+          Search for City Weather
         </div>
+        <div class="input-group mb-3">
+          <input id="city-input" type="text" class="form-control" placeholder="City Name" aria-label="City Name"
+            aria-describedby="button-addon2">
+          <div class="input-group-append">
+            <button class="btn btn-outline-secondary" type="button" id="button-addon2">Search</button>
+          </div>
+          
+          <ul id="cityHistory" class="history col-9"></ul>
 
-        <div class="dashboard col-lg-9">
-          <div> weather dashboard area </div>
         </div>
-
-
-
-
-
-
-
-
       </div>
     </div>
 
+    <div class=" weather-container col-lg-">
+      <div class="dashboard card col-lg">
+        <div id="weatherInfo">
+          <div class="weather-info">
+            <div id="cityName"> city name</div>
+            <div id="cityTemp">temp</div>
+            <div id="cityHumidity">humidity</div>
+            <div id="cityWindSpeed">wind speed</div>
+            <div id="cityUvIndex">UV Index</div>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="card" style="width: 10rem;">
+            <div id="day1" class="card-body">
+              <h5 class="card-title">Card title</h5>
+              <p class="card-text">Some quick example tcard's content.</p>
+            </div>
+          </div>
+          <div class="card" style="width: 10rem;">
+
+            <div id="day2" class="card-body">
+              <h5 class="card-title">Card title</h5>
+              <p class="card-text">Some quick example tt.</p>
+
+            </div>
+          </div>
+
+          <div class="card" style="width: 10rem;">
+
+            <div id="day3" class="card-body">
+              <h5 class="card-title">Card title</h5>
+              <p class="card-text">Some quick example text to .</p>
+
+            </div>
+          </div>
+          <div class="card" style="width: 10rem;">
+
+            <div id="day4" class="card-body">
+              <h5 class="card-title">Card title</h5>
+              <p class="card-text">Some quick example text to build .</p>
+
+            </div>
+          </div>
+          <div class="card" style="width: 10rem;">
+
+            <div id="day5" class="card-body">
+              <h5 class="card-title">Card title</h5>
+              <p class="card-text">Some quick example </p>
+
+            </div>
+          </div>
+
+        </div>
+      </div>
 
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-  </main>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-  <script src="./assets/js/script.js"></script>
+      <script src="./assets/js/script.js"></script>
 </body>
 
 </html>
