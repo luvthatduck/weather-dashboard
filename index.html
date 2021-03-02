@@ -15,28 +15,46 @@
 
 <body>
 
-  <header>
-    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <header class="header row">
+    <div class="">
       Weather Dashboard
-    </nav>
+  </div>
   </header>
 
 
   <main>
-    <container>
-      <div class="card">
-        <div class="card-body">
-          City Search Area
-        </div>
-        <div class="input-group mb-3">
-          <input id="city-input" type="text" class="form-control" placeholder="City Name" aria-label="City Name" aria-describedby="button-addon2">
-          <div class="input-group-append">
-            <button class="btn btn-outline-secondary" type="button" id="button-addon2">Search</button>
+    <div class="container">
+
+      <div class="row">
+
+        <div class="col-sm-3">
+          <div class="card-body">
+            Search for City Weather
           </div>
-          <div id="cityHistory">
+          <div class="input-group mb-3">
+            <input id="city-input" type="text" class="form-control" placeholder="City Name" aria-label="City Name"
+              aria-describedby="button-addon2">
+            <div class="input-group-append">
+              <button class="btn btn-outline-secondary" type="button" id="button-addon2">Search</button>
+            </div>
+            <ul id="cityHistory" class="history col-lg-12"></ul>
+
           </div>
         </div>
+
+        <div class="dashboard col-lg-9">
+          <div> weather dashboard area </div>
+        </div>
+
+
+
+
+
+
+
+
       </div>
+    </div>
 
 
 
@@ -45,7 +63,6 @@
 
 
 
-    </container>
 
 
 

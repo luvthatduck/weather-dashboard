@@ -1,4 +1,25 @@
 body {
-  background-color:teal
-}
+  
+};
 
+.card-body {
+  display: flex;
+  flex-flow: column;
+};
+
+.header {
+  display: flex;
+
+  border-style: double 2px black;
+  text-align: center;
+  background-color: blue;
+};
+
+.container, .dashboard {
+  border-style: double 2px black;
+
+};
+
+.container {
+  background-color: cadetblue;
+}
