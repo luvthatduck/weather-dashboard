@@ -52,7 +52,7 @@ body {
   margin: 5px;
   padding: 2px;
   width: 1000px;
-  height: 600px;
+  height: 900px;
   background-color: #e3e4e6;
   color: slategray;
   /* text-align: center; */
@@ -64,7 +64,7 @@ display: flex;
 margin: 5px;
 padding: 5px;
 width: 900px;
-height: 600px;
+height: 900px;
 background-color: whitesmoke;
 color: slategray;
 text-align: center;
@@ -126,12 +126,12 @@ text-align: center;
 .card:nth-child(3) {
   height: 265px;
 } */
-
-/* .footer {
+/* 
+  .footer {
   grid-area: footer;
   display: flex;
   align-items: center;
   justify-content: space-between;
   padding: 0 16px;
   background-color: #648ca6;
-} */
+
