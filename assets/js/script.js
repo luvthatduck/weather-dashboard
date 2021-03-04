@@ -2,11 +2,12 @@ var searchBtn = document.getElementById("button-addon2")
 var city = []
 var uviBadge = document.getElementById("cityUvIndex")
 
+
 searchBtn.addEventListener("click", function () {
   var cityInput = document.getElementById("city-input")
   city.push(cityInput.value)
 
-  localStorage.setItem('cityName', city)
+  localStorage.setItem('cityName', JSON.stringify(city))
   cityHistory(cityInput.value)
   weatherFetch(cityInput.value)
   tempFetch(cityInput.value)
@@ -23,10 +24,20 @@ searchBtn.addEventListener("click", function () {
 
 var cityHistory = function () {
   var cityHistory = document.getElementById("cityHistory");
-  var listofCities = localStorage.getItem("cityName")
-  // console.log(listofCities.split(","))
-  cityHistory.innerHTML = listofCities
-};
+  cityHistory.textContent = ""
+  var listofCities = JSON.parse(localStorage.getItem("cityName"))
+  var i, len, text;
+  for (i = 0, len = listofCities.length, text = ""; i < len; i++) {
+    text = listofCities[i];
+    var cityList = document.createElement("li")
+    cityList.textContent = text
+    cityHistory.append(cityList)
+  }
+
+}
+// cityList.addEventListener("click", function(){
+
+
 
 function weatherFetch(city) {
   // when you click on the button the city will call API and display in cityName ID
@@ -142,17 +153,14 @@ function uviFetch(lat, lon) {
       cityUvIndex.innerHTML = '<h4>' + response.current.uvi + ' UV Index <h4>'
       // content = JSON.parse(response.current.uvi)
 
-      if ( response.current.uvi >= 2 && response.current.uvi <= 7) {
-    
-  
+      if (response.current.uvi >= 2 && response.current.uvi <= 7) {
         cityUvIndex.classList.add("badge-warning")
       }
       else if (response.current.uvi >= 8) {
-      
         cityUvIndex.classList.add("badge-danger")
-       
+
       }
-     
+
     });
 };
 
