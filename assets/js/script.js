@@ -8,19 +8,11 @@ searchBtn.addEventListener("click", function () {
   city.push(cityInput.value)
 
   localStorage.setItem('cityName', JSON.stringify(city))
-  cityHistory(cityInput.value)
-  weatherFetch(cityInput.value)
-  tempFetch(cityInput.value)
-  humidityFetch(cityInput.value)
-  windspeedFetch(cityInput.value)
-  uviFetch(cityInput.value)
-  getCoord(cityInput.value)
-  fiveday1Fetch(cityInput.value)
-  fiveday2Fetch(cityInput.value)
-  fiveday3Fetch(cityInput.value)
-  fiveday4Fetch(cityInput.value)
-  fiveday5Fetch(cityInput.value)
+  weatherSearch(cityInput.value)
 });
+
+
+
 
 var cityHistory = function () {
   var cityHistory = document.getElementById("cityHistory");
@@ -30,12 +22,19 @@ var cityHistory = function () {
   for (i = 0, len = listofCities.length, text = ""; i < len; i++) {
     text = listofCities[i];
     var cityList = document.createElement("li")
+    cityList.addEventListener("click", function (event) {
+      weatherSearch(event.target.textContent)
+    })
     cityList.textContent = text
     cityHistory.append(cityList)
   }
 
 }
-// cityList.addEventListener("click", function(){
+
+
+// 
+// when you click on the city in the history list, it will simulate the clickevent listener
+//it will put that 
 
 
 
@@ -109,10 +108,6 @@ function windspeedFetch(city) {
 };
 
 
-
-
-
-
 function getCoord(city) {
 
   fetch(
@@ -151,7 +146,7 @@ function uviFetch(lat, lon) {
     .then(function (response) {
       var cityUvIndex = document.querySelector('#cityUvIndex');
       cityUvIndex.innerHTML = '<h4>' + response.current.uvi + ' UV Index <h4>'
-      // content = JSON.parse(response.current.uvi)
+
 
       if (response.current.uvi >= 2 && response.current.uvi <= 7) {
         cityUvIndex.classList.add("badge-warning")
@@ -180,11 +175,6 @@ function fiveday1Fetch(city) {
       forecast1day.innerHTML = '<b>' + response.list[3].dt_txt + '<b>'
       forecast1temp.innerHTML = '<p>' + response.list[3].main.temp + ' degrees F<p><img src="http://openweathermap.org/img/wn/' + response.list[3].weather[0].icon + '.png" />'
       forecast1hum.innerHTML = '<p>' + response.list[3].main.humidity + ' % Humidity<p>'
-
-
-
-
-
     });
 };
 function fiveday2Fetch(city) {
@@ -203,11 +193,6 @@ function fiveday2Fetch(city) {
       forecast1day.innerHTML = '<b>' + response.list[11].dt_txt + '<b>'
       forecast1temp.innerHTML = '<p>' + response.list[11].main.temp + ' degrees F<p><img src="http://openweathermap.org/img/wn/' + response.list[11].weather[0].icon + '.png" />'
       forecast1hum.innerHTML = '<p>' + response.list[11].main.humidity + ' % Humidity<p>'
-
-
-
-
-
     });
 };
 function fiveday3Fetch(city) {
@@ -226,11 +211,6 @@ function fiveday3Fetch(city) {
       forecast1day.innerHTML = '<b>' + response.list[19].dt_txt + '<b>'
       forecast1temp.innerHTML = '<p>' + response.list[19].main.temp + ' degrees F<p><img src="http://openweathermap.org/img/wn/' + response.list[19].weather[0].icon + '.png" />'
       forecast1hum.innerHTML = '<p>' + response.list[19].main.humidity + ' % Humidity<p>'
-
-
-
-
-
     });
 };
 function fiveday4Fetch(city) {
@@ -249,11 +229,6 @@ function fiveday4Fetch(city) {
       forecast1day.innerHTML = '<b>' + response.list[27].dt_txt + '<b>'
       forecast1temp.innerHTML = '<p>' + response.list[27].main.temp + ' degrees F<p><img src="http://openweathermap.org/img/wn/' + response.list[27].weather[0].icon + '.png" />'
       forecast1hum.innerHTML = '<p>' + response.list[27].main.humidity + ' % Humidity<p>'
-
-
-
-
-
     });
 };
 function fiveday5Fetch(city) {
@@ -272,13 +247,24 @@ function fiveday5Fetch(city) {
       forecast1day.innerHTML = '<b>' + response.list[35].dt_txt + '<b>'
       forecast1temp.innerHTML = '<p>' + response.list[35].main.temp + ' degrees F<p><img src="http://openweathermap.org/img/wn/' + response.list[35].weather[0].icon + '.png" />'
       forecast1hum.innerHTML = '<p>' + response.list[35].main.humidity + ' % Humidity<p>'
-
-
-
-
-
     });
 };
+
+
+function weatherSearch(searchCity) {
+  cityHistory(searchCity)
+  weatherFetch(searchCity)
+  tempFetch(searchCity)
+  humidityFetch(searchCity)
+  windspeedFetch(searchCity)
+  getCoord(searchCity)
+  fiveday1Fetch(searchCity)
+  fiveday2Fetch(searchCity)
+  fiveday3Fetch(searchCity)
+  fiveday4Fetch(searchCity)
+  fiveday5Fetch(searchCity)
+}
+
 
 
 
@@ -297,10 +283,3 @@ function fiveday5Fetch(city) {
 
 // display a 5 day forcast in 
 
-// weatherFetch()
-// tempFetch()
-// cityHistory()
-// humidityFetch()
-// windspeedFetch()
-
-// fivedayFetch()
