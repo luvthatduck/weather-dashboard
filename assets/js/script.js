@@ -8,7 +8,7 @@ searchBtn.addEventListener("click", function () {
   city.push(cityInput.value)
 
   localStorage.setItem('cityName', JSON.stringify(city))
-  weatherSearch(cityInput.value)
+  weatherSearch(cityInput.value);
 });
 
 
@@ -32,78 +32,24 @@ var cityHistory = function () {
 }
 
 
-// 
-// when you click on the city in the history list, it will simulate the clickevent listener
-//it will put that 
-
-
-
 function weatherFetch(city) {
   // when you click on the button the city will call API and display in cityName ID
   fetch(
     'https://api.openweathermap.org/data/2.5/weather?q='
     + city
-    + '&appid=77923bca40e129e0b197958708cf0174')
+    + '&units=imperial&appid=77923bca40e129e0b197958708cf0174')
     .then(function (response) {
       return response.json();
     })
     .then(function (response) {
       var citySearch = document.querySelector('#cityName');
       citySearch.innerHTML = '<h2>' + response.name + ' (' + new Date().toLocaleString() + ')<h2><img src="http://openweathermap.org/img/wn/' + response.weather[0].icon + '.png" />'
-
-    });
-};
-
-
-function tempFetch(city) {
-  // when you click on the button the city will call API and display in cityName ID
-  fetch(
-    'https://api.openweathermap.org/data/2.5/weather?q='
-    + city
-    + '&units=imperial'
-    + '&appid=77923bca40e129e0b197958708cf0174')
-    .then(function (response) {
-      return response.json();
-    })
-    .then(function (response) {
       var cityTemp = document.querySelector('#cityTemp');
       cityTemp.innerHTML = '<h3>' + response.main.temp + ' degrees Fahrenheit <h3>';
-
-    });
-};
-
-
-function humidityFetch(city) {
-
-  fetch(
-    'https://api.openweathermap.org/data/2.5/weather?q='
-    + city
-    + '&appid=77923bca40e129e0b197958708cf0174')
-    .then(function (response) {
-      return response.json();
-    })
-    .then(function (response) {
       var cityHumidity = document.querySelector('#cityHumidity');
       cityHumidity.innerHTML = '<h3>' + response.main.humidity + '% Humidity <h3>';
-
-    });
-};
-
-function windspeedFetch(city) {
-
-  fetch(
-    'https://api.openweathermap.org/data/2.5/weather?q='
-
-    + city
-
-    + '&appid=77923bca40e129e0b197958708cf0174')
-    .then(function (response) {
-      return response.json();
-    })
-    .then(function (response) {
       var cityWindspeed = document.querySelector('#cityWindSpeed');
       cityWindspeed.innerHTML = '<h3>' + response.wind.speed + ' mph Wind Speed <h3>';
-
     });
 };
 
@@ -158,6 +104,10 @@ function uviFetch(lat, lon) {
 
     });
 };
+
+
+
+
 
 function fiveday1Fetch(city) {
   fetch(
@@ -231,32 +181,75 @@ function fiveday4Fetch(city) {
       forecast1hum.innerHTML = '<p>' + response.list[27].main.humidity + ' % Humidity<p>'
     });
 };
-function fiveday5Fetch(city) {
+// function fiveday5Fetch(city) {
+//   fetch(
+//     'https://api.openweathermap.org/data/2.5/forecast?q='
+//     + city
+//     + '&units=imperial'
+//     + '&appid=77923bca40e129e0b197958708cf0174')
+//     .then(function (response) {
+//       return response.json();
+//     })
+//     .then(function (response) {
+//       var forecast1day = document.getElementById('day5date');
+//       var forecast1temp = document.getElementById('day5temp');
+//       var forecast1hum = document.getElementById('day5hum');
+//       forecast1day.innerHTML = '<b>' + response.list[35].dt_txt + '<b>'
+//       forecast1temp.innerHTML = '<p>' + response.list[35].main.temp + ' degrees F<p><img src="http://openweathermap.org/img/wn/' + response.list[35].weather[0].icon + '.png" />'
+//       forecast1hum.innerHTML = '<p>' + response.list[35].main.humidity + ' % Humidity<p>'
+//     });
+// };
+
+function fiveday5Fetch(lat, lon) {
   fetch(
-    'https://api.openweathermap.org/data/2.5/forecast?q='
-    + city
-    + '&units=imperial'
-    + '&appid=77923bca40e129e0b197958708cf0174')
+    'https://api.openweathermap.org/data/2.5/onecall?lat='
+
+    + lat
+
+    + '&lon='
+
+    + lon
+
+    + '&exclude=minutely,hourly,alerts&units=imperial&appid=77923bca40e129e0b197958708cf0174')
     .then(function (response) {
       return response.json();
     })
     .then(function (response) {
       var forecast1day = document.getElementById('day5date');
+    
       var forecast1temp = document.getElementById('day5temp');
       var forecast1hum = document.getElementById('day5hum');
-      forecast1day.innerHTML = '<b>' + response.list[35].dt_txt + '<b>'
-      forecast1temp.innerHTML = '<p>' + response.list[35].main.temp + ' degrees F<p><img src="http://openweathermap.org/img/wn/' + response.list[35].weather[0].icon + '.png" />'
-      forecast1hum.innerHTML = '<p>' + response.list[35].main.humidity + ' % Humidity<p>'
+      forecast1day.innerHTML = '<b>' + response.daily.dt + '<b>'
+      forecast1temp.innerHTML = '<p>' + response.daily.temp + ' degrees F<p><img src="http://openweathermap.org/img/wn/' + response.daily.weather[0].icon + '.png" />'
+      forecast1hum.innerHTML = '<p>' + response.daily.humidity + ' % Humidity<p>'
     });
-};
+  };
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 function weatherSearch(searchCity) {
   cityHistory(searchCity)
   weatherFetch(searchCity)
-  tempFetch(searchCity)
-  humidityFetch(searchCity)
-  windspeedFetch(searchCity)
+  // tempFetch(searchCity)
+  // humidityFetch(searchCity)
+  // windspeedFetch(searchCity)
   getCoord(searchCity)
   fiveday1Fetch(searchCity)
   fiveday2Fetch(searchCity)
@@ -266,20 +259,4 @@ function weatherSearch(searchCity) {
 }
 
 
-
-
-// function wtf() {
-//   var wtfisgoingon = document.getElementById('day1')
-//   wtfisgoingon.innerText = 'is this working?'
-// }
-
-// wtf()
-
-// will display city name, date and weather.icon
-//will display temperature main.temp
-// will display humidity main.humidty 
-// will display wind speed wind.speed
-//will display UV Index and change color to indicate safety Green/yellow/red
-
-// display a 5 day forcast in 
 
