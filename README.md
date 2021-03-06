@@ -12,6 +12,6 @@ Create a call from search history.
 
 
 
-![Image]()
+![Image](https://github.com/luvthatduck/weather-dashboard/blob/main/Screenshot%20(24).png?raw=true)
 
 ![Link to deployed site] (https://luvthatduck.github.io/weather-dashboard/)
