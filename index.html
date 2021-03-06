@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+    integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+  <link rel="stylesheet" href="assets/css/style.css" />
+
+  <title>Weather Dashboard</title>
+</head>
+
+<body>
+  <!-- <div class="grid-container"> -->
+
+  <header class="header">
+    <div class="header__title">WEATHER DASHBOARD</div>
+  </header>
+
+  <main class="main row">
+    <div class="city-container col-sm-2">
+      <div class="col-sm">
+        <div class="card-body">
+          Search for City Weather
+        </div>
+        <div class="input-group mb-3">
+          <input id="city-input" type="text" class="form-control" placeholder="City Name" aria-label="City Name"
+            aria-describedby="button-addon2">
+          <div class="input-group-append">
+            <button class="btn btn-outline-secondary" type="button" id="button-addon2">Search</button>
+          </div>
+          
+          <ul id="cityHistory" class="history col-9"></ul>
+
+        </div>
+      </div>
+    </div>
+
+    <div class=" weather-container col-lg-">
+      <div class="dashboard card col-lg">
+        <div id="weatherInfo">
+          <div class="weather-info">
+            <div id="cityName"> city name</div>
+            <div id="cityTemp">temp</div>
+            <div id="cityHumidity">humidity</div>
+            <div id="cityWindSpeed">wind speed</div>
+            <div id="cityUvIndex" class="badge badge-pill badge-success hide-badge-danger hide-badge-warning">UV Index</div>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="card" style="width: 10rem;">
+            <div id="day1" class="card-body">
+              <h5 id="day1date"  class="card-title1"></h5>
+              <p id="day1temp" class="card-text"></p>
+              <p id="day1hum" class="card-text"></p>
+            </div>
+          </div>
+          <div class="card" style="width: 10rem;">
+
+            <div id="day2" class="card-body">
+              <h5 id="day2date" class="card-title"></h5>
+              <p id="day2temp" class="card-text"></p>
+              <p id="day2hum" class="card-text"></p>
+
+            </div>
+          </div>
+
+          <div class="card" style="width: 10rem;">
+
+            <div id="day3" class="card-body">
+              <h5 id="day3date" class="card-title"></h5>
+              <p id="day3temp" class="card-text"></p>
+              <p id="day3hum" class="card-text"></p>
+            </div>
+          </div>
+          <div class="card" style="width: 10rem;">
+
+            <div id="day4" class="card-body">
+              <h5 id="day4date" class="card-title"></h5>
+              <p id="day4temp" class="card-text"></p>
+              <p id="day4hum" class="card-text"></p>
+            </div>
+          </div>
+          <div class="card" style="width: 10rem;">
+
+            <div id="day5" class="card-body">
+              <h5 id="day5date" class="card-title"></h5>
+              <p id="day5temp" class="card-text"></p>
+              <p id="day5hum" class="card-text"></p>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+
+
+
+      <script src="./assets/js/script.js"></script>
+</body>
+
+</html>
